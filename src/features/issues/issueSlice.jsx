@@ -20,8 +20,11 @@ const issuesSlice = createSlice({
   initialState: initialIssue,
   reducers: {
     showIssue: (state) => state,
+    addIssue: (state, action) => {
+      state.push(action.payload);
+    },
   },
 });
 
-export const { showIssue } = issuesSlice.actions;
+export const { showIssue, addIssue } = issuesSlice.actions;
 export default issuesSlice.reducer;
