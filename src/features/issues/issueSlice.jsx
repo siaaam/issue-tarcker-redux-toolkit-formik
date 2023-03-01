@@ -23,8 +23,21 @@ const issuesSlice = createSlice({
     addIssue: (state, action) => {
       state.push(action.payload);
     },
+    updateIssue: (state, action) => {
+      const { id, title, assignedTo, priority } = action.payload;
+      const isIssueExist = state.filter((issue) => issue.id === id);
+      if (isIssueExist) {
+        isIssueExist[0].title = title;
+        isIssueExist[0].assignedTo = assignedTo;
+      }
+    },
+    deleteIssue: (state, action) => {
+      const id = action.payload;
+      state = [...state.filter((issue) => issue.id !== id)];
+    },
   },
 });
 
-export const { showIssue, addIssue } = issuesSlice.actions;
+export const { showIssue, addIssue, deleteIssue, updateIssue } =
+  issuesSlice.actions;
 export default issuesSlice.reducer;
