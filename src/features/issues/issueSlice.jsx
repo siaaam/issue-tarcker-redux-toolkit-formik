@@ -38,6 +38,6 @@ const issuesSlice = createSlice({
   },
 });
 
-export const { showIssue, addIssue, deleteIssue, updateIssue } =
+export const { showIssue, addIssue, updateIssue, deleteIssue } =
   issuesSlice.actions;
 export default issuesSlice.reducer;
