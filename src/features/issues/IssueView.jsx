@@ -5,42 +5,42 @@ import { deleteIssue } from "./issueSlice";
 
 const IssueView = () => {
   const issues = useSelector((state) => state.issuesReducer);
-  console.log(issues);
   const dispatch = useDispatch();
   const handleDelete = (id) => {
     dispatch(deleteIssue(id));
   };
   return (
     <div>
-      <h2>List of Issues</h2>
-      <table border={1}>
-        <thead>
+      <h2 className="text-3xl text-center py-4">List of Issues</h2>
+
+      <table className="w-full">
+        <thead className="bg-gray-50 border-b-2 border-gray-200">
           <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Assigned To</th>
-            <th>Priority</th>
-            <th>Action</th>
+            <th className="p-3 text-sm font-semibold text-left">ID</th>
+            <th className="p-3 text-sm font-semibold text-left">Title</th>
+            <th className="p-3 text-sm font-semibold text-left">Assigned To</th>
+            <th className="p-3 text-sm font-semibold text-left">Priority</th>
+            <th className="p-3 text-sm font-semibold text-left">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-gray-50 border border-gray-200">
           {issues &&
             issues.map((issue) => {
               const { id, title, assignedTo, priority } = issue;
               return (
                 <tr key={id}>
-                  <td>{id}</td>
-                  <td>{title}</td>
-                  <td>{assignedTo}</td>
-                  <td>{priority}</td>
-                  <td>
+                  <td className="p-3 text-sm text-left">{id}</td>
+                  <td className="p-3 text-sm text-left">{title}</td>
+                  <td className="p-3 text-sm text-left">{assignedTo}</td>
+                  <td className="p-3 text-sm text-left">{priority}</td>
+                  <td className="p-3 text-sm text">
                     <Link
                       state={{ id, title, assignedTo, priority }}
                       to={`edit/${id}`}
                     >
                       Edit
                     </Link>
-                    <button onClick={(id) => handleDelete(id)}>Delete</button>
+                    <button onClick={() => handleDelete(id)}>Delete</button>
                   </td>
                 </tr>
               );

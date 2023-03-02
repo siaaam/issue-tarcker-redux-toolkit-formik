@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
@@ -7,17 +7,17 @@ const Navigation = () => {
       <h1 className="font-bold text-lg">Issue Tracker</h1>
       <ul className="flex justify-between items-center gap-5">
         <li>
-          <Link className="hover:text-cyan-700" to="/">
+          <NavLink className="hover:text-cyan-700" to="/">
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link className="hover:text-cyan-700" to="/issues">
+          <NavLink className="hover:text-cyan-700" to="/issues">
             Issues
-          </Link>
+          </NavLink>
         </li>
         <li className="bg-slate-400 px-4 py-2 rounded-md hover:bg-slate-700 hover:text-white">
-          <Link to="/add-issue">Add Issue</Link>
+          <NavLink to="/add-issue">Add Issue</NavLink>
         </li>
       </ul>
     </nav>
