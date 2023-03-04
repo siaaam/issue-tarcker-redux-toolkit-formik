@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addIssue } from "./issueSlice";
-import { Formik, Field, ErrorMessage, Form } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "../../Form/FormikControl";
 
@@ -22,11 +22,6 @@ const AddIssue = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState("");
-  const [assignedTo, setAssignedTo] = useState("");
-  const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState("");
-
   const numOfIssue = useSelector((state) => state.issuesReducer.length);
 
   const initialValues = {
@@ -36,13 +31,14 @@ const AddIssue = () => {
     priority: "",
   };
   const validationSchema = Yup.object({
-    title: Yup.string().required("required this field"),
-    description: Yup.string().required("required"),
-    assignedTo: Yup.string().required("required"),
-    priority: Yup.string().required("required"),
+    title: Yup.string().required("This field is required"),
+    description: Yup.string().required("This field is required"),
+    assignedTo: Yup.string().required("This field is required"),
+    priority: Yup.string().required("This field is required"),
   });
   const onSubmit = (values) => {
-    console.log("form values", values);
+    dispatch(addIssue({ id: numOfIssue + 1, ...values }));
+    navigate("/issues");
   };
   return (
     <Formik
@@ -87,9 +83,9 @@ const AddIssue = () => {
 
                   <button
                     type="submit"
-                    className="border-gray-700 bg-slate-300 hover:bg-slate-500 hover:text-white px-4 py-2 outline-none rounded-sm shadow-md"
+                    className="border-gray-700 bg-slate-300 hover:bg-slate-500 hover:text-white px-4 py-2 outline-none rounded-sm shadow-md "
                   >
-                    Add Issue
+                    Submit Issue
                   </button>
                 </Form>
               </div>
