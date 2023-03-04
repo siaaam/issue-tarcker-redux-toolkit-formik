@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import TableView from "../../components/TableView";
 import { deleteIssue } from "./issueSlice";
 
 const IssueView = () => {
@@ -35,37 +36,16 @@ const IssueView = () => {
         <tbody>
           {issues &&
             issues.map((issue) => {
-              const { id, title, assignedTo, priority } = issue;
+              const { id, title, assignedTo, priority, description } = issue;
               return (
-                <tr
+                <TableView
                   key={id}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                >
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    {id}
-                  </th>
-                  <td className="px-6 py-4 capitalize">{title}</td>
-                  <td className="px-6 py-4 capitalize">{assignedTo}</td>
-                  <td className="px-6 py-4 capitalize">{priority}</td>
-                  <td className="px-6 py-4">
-                    <Link
-                      state={{ id, title, assignedTo, priority }}
-                      to={`edit/${id}`}
-                      className="bg-slate-400 text-neutral-100 px-4 py-2 rounded-md mr-2 hover:bg-slate-500 hover:text-neutral-200"
-                    >
-                      Edit
-                    </Link>
-                    <button
-                      className="bg-red-300 px-4 py-2 rounded-md text-neutral-50 hover:bg-red-400"
-                      onClick={(id) => handleDelete(id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                  id={id}
+                  title={title}
+                  assignedTo={assignedTo}
+                  priority={priority}
+                  description={description}
+                />
               );
             })}
         </tbody>

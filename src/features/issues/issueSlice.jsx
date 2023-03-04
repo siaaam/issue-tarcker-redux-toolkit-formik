@@ -4,14 +4,16 @@ const initialIssue = [
   {
     id: 1,
     title: "fix the homepage",
-    assignedTo: "siam",
+    assignedTo: "rahim",
     priority: "high",
+    description: "this is the description 1",
   },
   {
     id: 2,
     title: "fix the navbar",
-    assignedTo: "rayhan",
+    assignedTo: "zahid",
     priority: "medium",
+    description: "this is the description 2",
   },
 ];
 
@@ -24,11 +26,13 @@ const issuesSlice = createSlice({
       state.push(action.payload);
     },
     updateIssue: (state, action) => {
-      const { id, title, assignedTo, priority } = action.payload;
+      const { id, title, assignedTo, priority, description } = action.payload;
       const isIssueExist = state.filter((issue) => issue.id === id);
       if (isIssueExist) {
         isIssueExist[0].title = title;
         isIssueExist[0].assignedTo = assignedTo;
+        isIssueExist[0].description = description;
+        isIssueExist[0].priority = priority;
       }
     },
     deleteIssue: (state, action) => {
