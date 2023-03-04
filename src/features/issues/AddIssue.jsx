@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addIssue } from "./issueSlice";
+import { Formik, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const AddIssue = () => {
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ const AddIssue = () => {
     navigate("/issues");
   };
   return (
-    <div>
+    <Formik>
       <h2 className="text-center text-3xl p-4">Add Issue</h2>
       <div className="flex items-center justify-center p-12">
         <div className="mx-auto w-full max-w-[550px]">
@@ -132,7 +134,7 @@ const AddIssue = () => {
           </form>
         </div>
       </div>
-    </div>
+    </Formik>
   );
 };
 
