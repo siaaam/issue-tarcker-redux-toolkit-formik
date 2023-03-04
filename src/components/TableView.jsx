@@ -1,7 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import Badge from "./Badge";
 
-const TableView = ({ title, assignedTo, priority, id, description }) => {
+const TableView = ({
+  title,
+  assignedTo,
+  priority,
+  id,
+  description,
+  deleteIssue,
+}) => {
+  const dispatch = useDispatch();
+  const handleDelete = (id) => {
+    dispatch(deleteIssue(id));
+  };
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
       <th
@@ -12,7 +25,9 @@ const TableView = ({ title, assignedTo, priority, id, description }) => {
       </th>
       <td className="px-6 py-4 capitalize">{title}</td>
       <td className="px-6 py-4 capitalize">{assignedTo}</td>
-      <td className="px-6 py-4 capitalize">{priority}</td>
+      <td className="px-6 py-4 capitalize">
+        <Badge priority={priority} />
+      </td>
       <td className="px-6 py-4">
         <Link
           state={{ id, title, assignedTo, priority, description }}

@@ -25,6 +25,11 @@ const issuesSlice = createSlice({
     addIssue: (state, action) => {
       state.push(action.payload);
     },
+    deleteIssue: (state, action) => {
+      const id = action.payload;
+      console.log(id);
+      // state = [...state.filter((issue) => issue.id !== id)];
+    },
     updateIssue: (state, action) => {
       const { id, title, assignedTo, priority, description } = action.payload;
       const isIssueExist = state.filter((issue) => issue.id === id);
@@ -34,10 +39,6 @@ const issuesSlice = createSlice({
         isIssueExist[0].description = description;
         isIssueExist[0].priority = priority;
       }
-    },
-    deleteIssue: (state, action) => {
-      const id = action.payload;
-      state = [...state.filter((issue) => issue.id !== id)];
     },
   },
 });

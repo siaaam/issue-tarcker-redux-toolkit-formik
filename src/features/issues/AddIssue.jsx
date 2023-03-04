@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { addIssue } from "./issueSlice";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import FormikControl from "../../Form/FormikControl";
+import FormikControl from "../../form/FormikControl";
 
 const assignedToOptions = [
   { key: "Select An Option", value: "" },

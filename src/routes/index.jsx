@@ -21,7 +21,7 @@ const Index = () => {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };
