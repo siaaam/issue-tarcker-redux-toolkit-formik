@@ -40,9 +40,13 @@ const issuesSlice = createSlice({
         isIssueExist[0].priority = priority;
       }
     },
+    deleteItem: (state, action) => {
+      const id = action.payload;
+      state = [...state.filter((issue) => issue.id !== id)];
+    },
   },
 });
 
-export const { showIssue, addIssue, updateIssue, deleteIssue } =
+export const { showIssue, addIssue, updateIssue, deleteIssue, deleteItem } =
   issuesSlice.actions;
 export default issuesSlice.reducer;

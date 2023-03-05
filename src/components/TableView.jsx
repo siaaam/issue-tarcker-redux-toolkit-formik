@@ -2,18 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Badge from "./Badge";
+import { deleteItem } from "../features/issues/issueSlice";
 
-const TableView = ({
-  title,
-  assignedTo,
-  priority,
-  id,
-  description,
-  deleteIssue,
-}) => {
+const TableView = ({ title, assignedTo, priority, id, description }) => {
   const dispatch = useDispatch();
   const handleDelete = (id) => {
-    dispatch(deleteIssue(id));
+    dispatch(deleteItem(id));
   };
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -38,7 +32,7 @@ const TableView = ({
         </Link>
         <button
           className="bg-red-300 px-4 py-2 rounded-md text-neutral-50 hover:bg-red-400"
-          onClick={(id) => handleDelete(id)}
+          onClick={() => handleDelete(id)}
         >
           Delete
         </button>
