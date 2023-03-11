@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Badge from "./Badge";
-import { deleteItem } from "../features/issues/issueSlice";
+import { deleteIssue } from "../features/issues/issueSlice";
 
 const TableView = ({ title, assignedTo, priority, id, description }) => {
   const dispatch = useDispatch();
   const handleDelete = (id) => {
-    dispatch(deleteItem(id));
+    dispatch(deleteIssue(id));
   };
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">

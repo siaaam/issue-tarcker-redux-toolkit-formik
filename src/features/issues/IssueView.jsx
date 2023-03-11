@@ -5,6 +5,7 @@ import { deleteIssue } from "./issueSlice";
 
 const IssueView = () => {
   const issues = useSelector((state) => state.issuesReducer);
+  console.log(issues);
 
   return (
     <div className="w-full">
